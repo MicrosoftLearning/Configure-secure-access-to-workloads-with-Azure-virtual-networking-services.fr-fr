@@ -33,14 +33,14 @@ Un groupe de sécurité d’application vous permet de regrouper des serveurs do
 
     Dans l’onglet **De base** de Créer un groupe de sécurité d’application, entrez les informations indiquées dans le tableau ci-dessous :
 
-    | Propriété | Valeur    |
-    |:---------|:---------|
-    |Abonnement|**Sélectionnez votre abonnement**|
-    |Resource group|**RG1**|
-    |Nom|**app-backend-asg**|
-    |Région|**USA Est**|
+    | Propriété       | Valeur                        |
+    | :------------- | :--------------------------- |
+    | Abonnement   | **Sélectionnez votre abonnement** |
+    | Resource group | **RG1**                      |
+    | Nom           | **app-backend-asg**          |
+    | Région         | **USA Est**                  |
 
-1. Sélectionnez **Vérifier + créer**, puis **Créer**.
+1. Sélectionnez **Vérifier + créer**, puis sélectionnez **Créer**.
 
 [En savoir plus sur la création d’un groupe de sécurité d’application](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic#create-application-security-groups).
 
@@ -56,16 +56,16 @@ Un groupe de sécurité réseau (NSG) sécurise le trafic réseau dans votre ré
 
     Dans l’onglet **De base** de Créer un groupe de sécurité réseau, entrez les informations indiquées dans le tableau ci-dessous :
 
-    | Propriété | Valeur    |
-    |:---------|:---------|
-    |Abonnement|**Sélectionnez votre abonnement**|
-    |Resource group|**RG1**|
-    |Nom|**app-vnet-nsg**|
-    |Région|**USA Est**|
+    | Propriété       | Valeur                        |
+    | :------------- | :--------------------------- |
+    | Abonnement   | **Sélectionnez votre abonnement** |
+    | Resource group | **RG1**                      |
+    | Nom           | **app-vnet-nsg**             |
+    | Région         | **USA Est**                  |
 
     [En savoir plus sur la création d’un groupe de sécurité réseau](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic#create-a-network-security-group).
 
-1. Sélectionnez **Vérifier + créer**, puis **Créer**.
+1. Sélectionnez **Vérifier + créer**, puis sélectionnez **Créer**.
 
 Dans cette section, vous allez associer le groupe de sécurité réseau au sous-réseau du réseau virtuel que vous avez créé.
 
@@ -82,6 +82,7 @@ Dans cette section, vous allez associer le groupe de sécurité réseau au sous-
     [En savoir plus sur l’association d’un groupe de sécurité réseau à un sous-réseau](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic#associate-a-network-security-group-to-a-subnet).
 
 ### Créer des règles pour le groupe de sécurité réseau
+
 Un groupe de sécurité réseau (NSG) sécurise le trafic réseau dans votre réseau virtuel.
 
 1. Dans la zone de recherche située en haut du portail, entrez **Groupe de sécurité réseau**. Dans les résultats de la recherche, sélectionnez Groupe de sécurité réseau.
@@ -94,16 +95,16 @@ Un groupe de sécurité réseau (NSG) sécurise le trafic réseau dans votre ré
 
 1. Sur la page **Ajouter une règle de sécurité de trafic entrant**, entrez les informations du tableau ci-dessous :
 
-    | Propriété | Valeur    |
-    |:---------|:---------|
-    |Source|**Any**|
-    |Source port ranges|**\***|
-    |Destination|**Groupe de sécurité d’application**|
-    |Groupe de sécurité d’application de destination|**app-backend-asg**|    
-    |Service|**SSH**|
-    |Action|**Autoriser**|
-    |Priorité|**100**|
-    |Nom|**AllowSSH**|
+    | Propriété                               | Valeur                          |
+    | :------------------------------------- | :----------------------------- |
+    | Source                                 | **Any**                        |
+    | Source port ranges                     | **\***                         |
+    | Destination                            | **Groupe de sécurité d’application** |
+    | Groupe de sécurité d’application de destination | **app-backend-asg**            |
+    | Service                                | **SSH**                        |
+    | Action                                 | **Autoriser**                      |
+    | Priorité                               | **100**                        |
+    | Nom                                   | **AllowSSH**                   |
 
     [En savoir plus sur la création d’une règle de groupe de sécurité réseau](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic#create-a-network-security-group).
 
@@ -132,17 +133,17 @@ Un groupe de sécurité réseau (NSG) sécurise le trafic réseau dans votre ré
 1. Répétez l’étape précédente pour **VM2**.
 
 ### Associer le groupe de sécurité d’application à l’interface réseau de la machine virtuelle
+
 Quand vous avez créé les machines virtuelles, Azure a créé une interface réseau pour chacune d’elles et l’a attachée à celle-ci.
 
 Ajoutez le groupe de sécurité d’application que vous avez créé précédemment à l’interface réseau de VM2.
 
 1. Dans le Portail Azure, accédez au groupe de ressources **RG1** et sélectionnez **VM2**.
 
-1. Accédez à l’onglet Mise en réseau de la machine virtuelle et sélectionnez **+ Ajouter des groupes de sécurité d’application** dans la section **Groupes de sécurité d’application**. 
+1. Accédez à l’onglet Mise en réseau de la machine virtuelle et sélectionnez **+ Ajouter des groupes de sécurité d’application** dans la section **Groupes de sécurité d’application**.
 
 1. Sélectionnez **app-backend-asg** dans la liste des groupes de sécurité d’application.
 
 1. Sélectionnez **Ajouter**.
 
   [En savoir plus sur l’ajout d’une carte réseau (NIC) à un groupe de sécurité d’application](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface?tabs=azure-portal#add-or-remove-from-application-security-groups).
-
