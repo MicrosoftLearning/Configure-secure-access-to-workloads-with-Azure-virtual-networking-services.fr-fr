@@ -23,58 +23,61 @@ Vous avez été chargé d’appliquer des [principes de confiance zéro](https:/
 ## Instructions de l’exercice
 
 >**Remarque** : pour terminer ce labo, vous aurez besoin d’un [abonnement Azure](https://azure.microsoft.com/free/) avec le rôle RBAC **Contributeur** affecté.
+
 > Dans ce labo, utilisez la valeur par défaut pour toutes les propriétés qui ne sont pas spécifiées quand vous êtes invité à créer une ressource.
 
 ### Créer des réseaux virtuels en étoile et des sous-réseaux
 
 Commencez par créer les réseaux virtuels présentés dans le diagramme ci-dessus.
 
-1. Ouvrez un navigateur, accédez au <a href="https://portal.azure.com/#home">portail Microsoft Azure</a> et connectez-vous.
-1. Pour créer un réseau virtuel, dans la barre de recherche en haut du portail, saisissez **« Réseau virtuel »** et sélectionnez **« Réseaux virtuels »** dans les résultats.
-1. Dans le volet du portail **« Réseaux virtuels »**, sélectionnez «  **+ Créer** ».
-1. Remplissez tous les onglets du processus de création à l’aide des valeurs du tableau suivant :
+1. Connectez-vous au **portail Azure** - `https://portal.azure.com`.
+   
+1. Recherchez et sélectionnez `Virtual Networks`.
+   
+1. Sélectionnez **+ Créer** et effectuez la configuration du réseau **app-vnet**. Ce réseau virtuel nécessite deux sous-réseaux, **front-end** et **backend**. 
 
     | Propriété             | Valeur           |
     | :------------------- | :-------------- |
     | Groupe de ressources       | **RG1**         |
-    | Nom                 | **app-vnet**    |
+    | Nom du réseau virtuel | `app-vnet`    |
     | Région               | **USA Est**     |
     | Espace d’adressage IPv4   | **10.1.0.0/16** |
-    | Nom du sous-réseau          | **frontend**    |
+    | Nom du sous-réseau          | `frontend`    |
     | Plage d’adresses de sous-réseau | **10.1.0.0/24** |
-    | Nom du sous-réseau          | **serveur principal**     |
+    | Nom du sous-réseau          | `backend`     |
     | Plage d’adresses de sous-réseau | **10.1.1.0/24** |
 
-    **Remarque** : laissez les autres paramètres avec leurs valeurs par défaut. Sélectionnez **« Suivant »** pour passer à l’onglet suivant, puis **Créer** pour créer le réseau virtuel.
-1. En suivant les mêmes étapes que ci-dessus, créez le réseau virtuel Azure **Hub-vnet** à l’aide des valeurs du tableau suivant :
+    **Remarque** : laissez les autres paramètres avec leurs valeurs par défaut. Une fois terminé, sélectionnez **Examiner + créer**, puis **Créer**.
+   
+1. Créez la configuration du réseau virtuel **Hub-vnet**. Ce réseau virtuel comporte le sous-réseau de pare-feu. 
 
     | Propriété             | Valeur                    |
     | :------------------- | :----------------------- |
     | Groupe de ressources       | **RG1**                  |
-    | Nom                 | **Hub-vnet** |
+    | Nom                 | `hub-vnet` |
     | Région               | **USA Est**              |
     | Espace d’adressage IPv4   | **10.0.0.0/16**          |
     | Nom du sous-réseau          | **AzureFirewallSubnet**  |
     | Plage d’adresses de sous-réseau | **10.0.0.0/24**          |
 
-1. Une fois le déploiement terminé : Revenez au portail, dans la barre de recherche, saisissez **« groupes de ressources »**, puis sélectionnez **« Groupes de ressources »** dans les résultats. Sélectionnez **« RG1 »** dans le volet principal et confirmez que les deux réseaux virtuels ont été déployés.
+1. Une fois les déploiements terminés, recherchez et sélectionnez votre **groupe de ressources**. Vérifiez que vos nouveaux réseaux virtuels font partie du groupe de ressources. 
 
 ### Configurer une relation d’homologue entre les réseaux virtuels
 
-1. La configuration d’une relation homologue entre les deux réseaux virtuels permet au trafic de circuler dans les deux sens entre les réseaux virtuels **app-vnet** et **hub-vnet**.
-1. Dans le portail, dans la vue du groupe de ressources RG1. Sélectionnez le réseau virtuel **« app-vnet »**.
-1. Dans le menu contextuel **app-vnet** sur le côté gauche du portail, faites défiler l’écran vers le bas et sélectionnez **peerings**
-1. Dans le volet de peerings **app-vnet**, sélectionnez **+ Ajouter**.
-1. Remplissez le formulaire en utilisant les valeurs contenues dans le tableau suivant :
+1. Recherchez et sélectionnez le réseau virtuel `app-vnet`.
+   
+1. Sous **Paramètres**, sélectionnez **Peerings**.
+   
+1. Sélectionnez **+ Ajouter** pour ajouter un peering entre les deux réseaux virtuels. 
 
     | Propriété                                 | Valeur                          |
     | :--------------------------------------- | :----------------------------- |
-    | Nom de cette liaison d’appairage de réseaux virtuels   | **app-vnet-to-hub** |
-    | Nom de cette liaison d’appairage de réseaux virtuels distants | **hub-to-app-vnet** |
-    | Réseau virtuel                          | **hub-vnet**       |
+    | Nom du lien de peering              | `app-vnet-to-hub` |
+    | Réseau virtuel    | `hub-vnet` |
+    | Nom du lien de peering de réseaux virtuels locaux | `hub-to-app-vnet` |
 
     **Remarque** : laissez les autres paramètres avec leurs valeurs par défaut. Sélectionnez **« Ajouter »** pour créer l’appairage de réseaux virtuels.
 
     [En savoir plus sur l’appairage de réseaux virtuels](https://learn.microsoft.com/azure/virtual-network/virtual-network-manage-peering?tabs=peering-portal)
 
-1. Une fois le processus terminé, et après la mise à jour de la configuration : Vérifiez que **l’état du peering** est défini sur **Connecté**. (vous devrez peut-être actualiser la page pour voir l’état mis à jour)
+1. Une fois le déploiement terminé, vérifiez que l’**état de peering** est **Connecté**. 
