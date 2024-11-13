@@ -1,29 +1,31 @@
 ---
 lab:
-  title: "Exercice\_: protéger l’application web contre le trafic malveillant et bloquer l’accès non autorisé"
+  title: "Exercice\_03\_: créer et configurer un Pare-feu Azure"
   module: Guided Project - Configure secure access to workloads with Azure virtual networking services
 ---
 
-# Labo : protéger l’application web contre le trafic malveillant et bloquer l’accès non autorisé
+# Exercice 03 : créer et configurer un Pare-feu Azure
 
 ## Scénario
 
-Votre organisation souhaite protéger l’application web contre le trafic malveillant et bloquer l’accès non autorisé.
-
-En plus du groupe de sécurité réseau (NSG) et du groupe de sécurité d’application (ASG), vous pouvez configurer un pare-feu pour ajouter une couche de sécurité supplémentaire à l’application web. Un pare-feu protège l’application web contre le trafic malveillant et bloque l’accès non autorisé grâce à des stratégies que vous configurez.
-
-Une stratégie de Pare-feu Azure est une ressource de haut niveau comprenant les paramètres de sécurité et de fonctionnement du Pare-feu Azure. Elle permet de définir une hiérarchie de règles et de garantir la conformité. Dans cette tâche, vous configurez des règles d’application et des règles réseau pour le pare-feu à l’aide de la stratégie de pare-feu. La stratégie du Pare-feu Azure permet de gérer les ensembles de règles que le Pare-feu Azure utilise pour filtrer le trafic.
-
-### Diagramme de l'architecture
-
-![Diagramme montrant un réseau virtuel avec un pare-feu et une table de routage.](../Media/task-3.png)
+Votre organisation nécessite une sécurité réseau centralisée pour le réseau virtuel d’application. À mesure que l’utilisation de l’application augmente, un filtrage au niveau de l’application plus précis et une protection avancée contre les menaces seront nécessaires. En outre, il est prévu que l’application aura besoin de mises à jour continues à partir de pipelines Azure DevOps. Vous identifiez ces exigences.
++ Pare-feu Azure est nécessaire pour une sécurité supplémentaire dans le réseau app-vnet. 
++ Une **stratégie de pare-feu** doit être configurée pour aider à gérer l’accès à l’application. 
++ Une **règle d’application** de stratégie de pare-feu est nécessaire. Cette règle permettra à l’application d’accéder à Azure DevOps afin que le code de l’application puisse être mis à jour. 
++ Une **règle de réseau** de stratégie de pare-feu est nécessaire. Cette règle autorisera la résolution DNS. 
 
 ### Tâches d'apprentissage
 
-- Créez un Pare-feu Azure.
-- Créer et configurer une stratégie de pare-feu
-- Créez une collection de règles d’application.
-- Créez une collection de règles de réseau.
++ Créez un Pare-feu Azure.
++ Créer et configurer une stratégie de pare-feu
++ Créez une collection de règles d’application.
++ Créez une collection de règles de réseau.
+
+## Diagramme de l'architecture
+
+![Diagramme montrant un réseau virtuel avec un pare-feu et une table de routage.](../Media/task-3.png)
+
+
   
 ## Instructions de l’exercice
 
@@ -44,7 +46,7 @@ Une stratégie de Pare-feu Azure est une ressource de haut niveau comprenant les
     | Nom          | **AzureFirewallSubnet** |
     | Plage d’adresses | **10.1.63.0/24**        |
 
-    > **Remarque** : laissez les autres paramètres par défaut.
+**Remarque** : laissez les autres paramètres par défaut.
 
 ### Créer un pare-feu Azure
 
@@ -75,79 +77,71 @@ Une stratégie de Pare-feu Azure est une ressource de haut niveau comprenant les
 
 ### Mettre à jour la stratégie de pare-feu
 
-1. Dans la zone de recherche située en haut du portail, entrez **Stratégie de pare-feu**. Sélectionnez **Stratégies de pare-feu** dans les résultats de la recherche.
+1. Dans le portail, recherchez et sélectionnez `Firewall Policies`. 
 
 1. Sélectionnez **fw-policy**.
 
-1. Sélectionnez **Règles d’application**.
+### Ajouter une règle d’application
 
-1. Sélectionnez **« + Collection de règles d’application »**.
+1. Dans le panneau **Paramètres**, sélectionnez **Règles d’application**, puis **Ajouter un regroupement de règles**.
 
-1. Utilisez les valeurs du tableau suivant. Pour toute propriété qui n’est pas spécifiée, utilisez la valeur par défaut.
+1. Configurez le regroupement de règles d’application, puis sélectionnez **Ajouter**. 
 
     | Propriété               | Valeur                                     |
     | :--------------------- | :---------------------------------------- |
-    | Nom                   | **app-vnet-fw-rule-collection**           |
+    | Nom                   | `app-vnet-fw-rule-collection`         |
     | Type de regroupement de règles   | **Application**                           |
-    | Priorité               | **200**                                   |
+    | Priorité               | `200`                                   |
     | Action de regroupement de règles | **Autoriser**                                 |
     | Groupe de regroupement de règles  | **DefaultApplicationRuleCollectionGroup** |
+    | Nom             | `AllowAzurePipelines`                |
+    | Type de source      | **Adresse IP**                         |
+    | Source           | `10.1.0.0/23`                       |
+    | Protocol         | `https`                             |
+    | Type de destination | **FQDN**                                  |
+    | Destination      | `dev.azure.com, azure.microsoft.com` |
 
-    1. Sous **règles**, utilisez les valeurs indiquées dans le tableau suivant.
+**Remarque** : la règle **AllowAzurePipelines** permet à l’application web d’accéder à Azure Pipelines. La règle permet à l’application web d’accéder au service Azure DevOps et au site web Azure.
 
-        | Propriété         | Valeur                                  |
-        | :--------------- | :------------------------------------- |
-        | Nom             | **AllowAzurePipelines**                |
-        | Type de source      | **Adresse IP**                         |
-        | Source           | **10.1.0.0/23**                        |
-        | Protocol         | **https**                              |
-        | Type de destination | FQDN                                   |
-        | Destination      | **dev.azure.com, azure.microsoft.com** |
+### Ajouter une règle de réseau
 
-        puis sélectionnez **Ajouter**.
+1. Dans le panneau **Paramètres**, sélectionnez **Règles de réseau**, puis **Ajouter un regroupement réseau**.
 
-> **Remarque** : la règle **AllowAzurePipelines** permet à l’application web d’accéder à Azure Pipelines. La règle permet à l’application web d’accéder au service Azure DevOps et au site web Azure.
-
-1. Créez une **collection de règles réseau** qui contient une règle d’adresse IP unique à l’aide des valeurs indiquées dans le tableau suivant. Pour toute propriété qui n’est pas spécifiée, utilisez la valeur par défaut.
-
-1. Sélectionnez **Règles de réseau**.
-
-1. Sélectionnez **« + Collection de règles de réseau »**.
-
-1. Utilisez les valeurs du tableau suivant. Pour toute propriété qui n’est pas spécifiée, utilisez la valeur par défaut.
+1. Configurez la règle de réseau, puis sélectionnez **Ajouter**.  
 
     | Propriété               | Valeur                                 |
     | :--------------------- | :------------------------------------ |
-    | Nom                   | **app-vnet-fw-nrc-dns**               |
+    | Nom                   | `app-vnet-fw-nrc-dns`               |
     | Type de regroupement de règles   | **Réseau**                           |
-    | Priorité               | **200**                               |
+    | Priorité               | `200`                        |
     | Action de regroupement de règles | **Autoriser**                             |
     | Groupe de regroupement de règles  | **DefaultNetworkRuleCollectionGroup** |
+    | Règle                  | **AllowDns**         |
+    | Source                | `10.1.0.0/23`      |
+    | Protocole              | **UDP**              |
+    | Ports de destination     | `53`               |
+    | Adresses de destination | **1.1.1.1, 1.0.0.1** |
 
-    1. Sous **règles**, utilisez les valeurs indiquées dans le tableau suivant.
+### Vérifier l’état du pare-feu et de la stratégie de pare-feu
 
-        | Propriété              | Valeur                |
-        | :-------------------- | :------------------- |
-        | Règle                  | **AllowDns**         |
-        | Source                | **10.1.0.0/23**      |
-        | Protocol              | **UDP**              |
-        | Ports de destination     | **53**               |
-        | Adresses de destination | **1.1.1.1, 1.0.0.1** |
+1. Dans le portail, recherchez et sélectionnez **Pare-feu**. 
 
-        Ensuite, sélectionnez **Ajouter**.
+1. Affichez le pare-feu **app-vnet-firewall** et vérifiez que l’**état d’approvisionnement** est **Réussi**. Cela peut prendre quelques minutes. 
 
-    En savoir plus sur la [création d’une règle d’application](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal#configure-an-application-rule) et la [création d’une règle réseau](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal#configure-a-network-rule).
+1. Dans le portail, recherchez et sélectionnez **Stratégies de pare-feu**.
 
-1. Pour vérifier que l’état d’approvisionnement des stratégies de pare-feu et de Pare-feu Azure affiche **Réussi**.
+1. Affichez la stratégie **fw-policy** et vérifiez que l’**état d’approvisionnement** est **Réussi**. Cela peut prendre quelques minutes.
 
-1.Dans la zone de recherche située en haut du portail, entrez **Pare-feu**. Sélectionnez **Pare-feu** dans les résultats de la recherche.
+### En savoir plus avec la formation en ligne
 
-1. Sélectionnez **app-vnet-firewall**.
++ [Présentation du Pare-feu Azure](https://learn.microsoft.com/training/modules/introduction-azure-firewall/). Dans ce module, vous découvrez le fonctionnement, les règles, les options de déploiement et l’administration de Pare-feu Azure.
++ [Présentation d’Azure Firewall Manager](https://learn.microsoft.com/training/modules/intro-to-azure-firewall-manager/). Dans ce module, vous découvrez comment Azure Firewall Manager permet de centraliser la gestion des stratégies de sécurité et des itinéraires pour les périmètres de sécurité basés sur le cloud.
 
-1- Contrôlez que l’**état d’approvisionnement** est **Réussi**.
+### Points clés
 
-1- Dans la zone de recherche située en haut du portail, entrez **Stratégies de pare-feu**. Sélectionnez **Stratégies de pare-feu** dans les résultats de la recherche
+Félicitations ! Vous avez terminé l’exercice. Voici les points clés principaux :
 
-1. Sélectionnez **fw-policy**.
-
-1- Contrôlez que l’**état d’approvisionnement** est **Réussi**.
++ Le Pare-feu Azure est un service de sécurité basé sur le cloud qui protège vos ressources Réseau virtuel Azure des menaces entrantes et sortantes.
++ Une stratégie de Pare-feu Azure est une ressource qui contient un ou plusieurs regroupements de règles NAT, de réseau et d’application.
++ Les règles de réseau autorisent ou refusent le trafic en fonction des adresses IP, des ports et des protocoles.
++ Les règles d’application autorisent ou refusent le trafic en fonction des noms de domaine complets (FQDN), des URL et des protocoles HTTP/HTTPS.
