@@ -1,34 +1,37 @@
 ---
 lab:
-  title: "Exercice\_: fournir l’isolation et la segmentation réseau pour l’application web"
+  title: "Exercice\_01\_: créer et configurer des réseaux virtuels"
   module: Guided Project - Configure secure access to workloads with Azure virtual networking services
 ---
 
-# Labo : Fournir un réseau virtuel hub de services partagés avec isolement et segmentation
+# Exercice 01 : créer et configurer des réseaux virtuels
 
 ## Scénario
 
-Vous avez été chargé d’appliquer des [principes de confiance zéro](https://learn.microsoft.com/security/zero-trust/azure-infrastructure-networking) à un réseau virtuel hub dans Azure. Le service informatique a besoin d’un isolement et d’une segmentation réseau pour l’application web dans un réseau spoke. Pour fournir un isolement et une segmentation réseau pour l’application web, vous devez créer un réseau virtuel Azure avec des sous-réseaux avec un espace d’adressage fourni par l’équipe informatique. Une fois le réseau virtuel créé, l’étape suivante consiste à configurer l’appairage de réseaux virtuels. Cela permet aux réseaux virtuels de communiquer entre eux en toute sécurité et en privé.
+Votre organisation migre une application Web vers Azure. Votre première tâche consiste à mettre en place les réseaux virtuels et les sous-réseaux. Vous devez également homologuer en toute sécurité les réseaux virtuels. Vous identifiez ces exigences. 
++ Deux réseaux virtuels sont nécessaires, **app-vnet** et **hub-vnet**. Cela simule une architecture réseau en étoile. 
++ Le réseau app-vnet hébergera l’application. Ce réseau virtuel nécessite deux sous-réseaux. Le **sous-réseau frontend** hébergera les serveurs Web. Le **sous-réseau backend** hébergera les serveurs de base de données.
++ Le réseau hub-vnet nécessite un sous-réseau uniquement pour le pare-feu. 
++ Les deux réseaux virtuels doivent être capables de communiquer entre eux de manière sécurisée et en privé via un **appairage de réseaux virtuels**. 
++ Les deux réseaux virtuels doivent se trouver dans la même région. 
 
-### Diagramme de l'architecture
+## Tâches d'apprentissage
+
++ Créer un réseau virtuel.
++ Créez un sous-réseau.
++ Configurez VNET Peering.
+
+## Diagramme de l'architecture
 
 ![Diagramme montrant deux réseaux virtuels appairés.](../Media/task-1.png)
 
-### Tâches d'apprentissage
-
-- Créez un réseau virtuel
-- Créer un sous-réseau
-- Configurer VNET Peering
-
 ## Instructions de l’exercice
 
->**Remarque** : pour terminer ce labo, vous aurez besoin d’un [abonnement Azure](https://azure.microsoft.com/free/) avec le rôle RBAC **Contributeur** affecté.
-
-> Dans ce labo, utilisez la valeur par défaut pour toutes les propriétés qui ne sont pas spécifiées quand vous êtes invité à créer une ressource.
+**Remarque** : pour terminer ce labo, vous aurez besoin d’un [abonnement Azure](https://azure.microsoft.com/free/) avec le rôle RBAC **Contributeur** affecté. Dans ce labo, utilisez la valeur par défaut pour toutes les propriétés qui ne sont pas spécifiées quand vous êtes invité à créer une ressource.
 
 ### Créer des réseaux virtuels en étoile et des sous-réseaux
 
-Commencez par créer les réseaux virtuels présentés dans le diagramme ci-dessus.
+Un [réseau virtuel Azure](https://learn.microsoft.com/azure/virtual-network/virtual-networks-overview) permet à de nombreux types de ressources Azure de communiquer de manière sécurisée entre eux, avec Internet et avec des réseaux locaux. Toutes les ressources Azure d’un réseau virtuel sont déployées en [sous-réseaux](https://learn.microsoft.com/azure/virtual-network/virtual-network-manage-subnet?tabs=azure-portal) au sein de ce réseau virtuel. 
 
 1. Connectez-vous au **portail Azure** - `https://portal.azure.com`.
    
@@ -60,9 +63,13 @@ Commencez par créer les réseaux virtuels présentés dans le diagramme ci-dess
     | Nom du sous-réseau          | **AzureFirewallSubnet**  |
     | Plage d’adresses de sous-réseau | **10.0.0.0/24**          |
 
-1. Une fois les déploiements terminés, recherchez et sélectionnez votre **groupe de ressources**. Vérifiez que vos nouveaux réseaux virtuels font partie du groupe de ressources. 
+1. Une fois les déploiements terminés, recherchez et sélectionnez vos réseaux virtuels.
+
+1. Vérifiez que vos réseaux virtuels et sous-réseaux ont été déployés. 
 
 ### Configurer une relation d’homologue entre les réseaux virtuels
+
+L’[appairage de réseaux virtuels](https://learn.microsoft.com/azure/virtual-network/virtual-network-peering-overview) vous permet de connecter en toute fluidité deux réseaux virtuels ou plus dans Azure. 
 
 1. Recherchez et sélectionnez le réseau virtuel `app-vnet`.
    
@@ -72,12 +79,24 @@ Commencez par créer les réseaux virtuels présentés dans le diagramme ci-dess
 
     | Propriété                                 | Valeur                          |
     | :--------------------------------------- | :----------------------------- |
-    | Nom du lien de peering              | `app-vnet-to-hub` |
+    | Nom du lien de peering distant              | `app-vnet-to-hub` |
     | Réseau virtuel    | `hub-vnet` |
     | Nom du lien de peering de réseaux virtuels locaux | `hub-to-app-vnet` |
 
     **Remarque** : laissez les autres paramètres avec leurs valeurs par défaut. Sélectionnez **« Ajouter »** pour créer l’appairage de réseaux virtuels.
 
-    [En savoir plus sur l’appairage de réseaux virtuels](https://learn.microsoft.com/azure/virtual-network/virtual-network-manage-peering?tabs=peering-portal)
+1. Une fois le déploiement terminé, vérifiez que l’**état de peering** est **Connecté**.
 
-1. Une fois le déploiement terminé, vérifiez que l’**état de peering** est **Connecté**. 
+## En savoir plus avec la formation en ligne
+
++ [Présentation des réseaux virtuels Azure](https://learn.microsoft.com/training/modules/introduction-to-azure-virtual-networks/). Dans ce module, vous apprenez à concevoir et à implémenter des services de mise en réseau Azure. Vous y découvrez les réseaux virtuels, les adresses IP publiques et privées, le DNS, l’appairage de réseaux virtuels, le routage et la NAT virtuelle Azure.
+
+## Points clés
+
+Félicitations ! Vous avez terminé l’exercice. Voici les points clés principaux :
+
++ Les réseaux virtuels Azure (VNet) fournissent un environnement réseau sécurisé et isolé pour vos ressources cloud. Vous pouvez créer plusieurs réseaux virtuels par région et par abonnement.
++ Lors de la conception de réseaux virtuels, assurez-vous que l’espace d’adressage de réseau virtuel (bloc CIDR) ne chevauche pas d’autres plages réseau de votre organisation.
++ Un sous-réseau est une plage d’adresses IP dans le réseau virtuel. Vous pouvez segmenter les réseaux virtuels en sous-réseaux de différentes tailles, en créant autant de sous-réseaux que nécessaire pour l’organisation et la sécurité dans le cadre de la limite de votre abonnement. Chaque sous-réseau doit avoir une plage d’adresses unique.
++ Certains services Azure, tel que Pare-feu Azure, nécessitent leur propre sous-réseau.
++ Le peering de réseaux virtuels vous permet de connecter deux réseaux virtuels Azure en toute transparence. Les réseaux virtuels apparaissent comme un seul réseau à des fins de connectivité.
