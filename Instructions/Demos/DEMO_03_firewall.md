@@ -10,7 +10,7 @@ demo:
 Dans cette démonstration, vous allez explorer le Pare-feu Azure.
 Examinez et créez une stratégie de pare-feu et de Pare-feu Azure.
 1.  [Diapositive de prise en charge] Avant de commencer la démonstration, penchons-nous sur ce qu’est le Pare-feu Azure.
-2.  Accédez au portail Azure.
+2.  Accédez au Portail Azure.
 3.  Créez un Pare-feu Azure.
 4.  (i) sous l’onglet De base, expliquez les options de configuration disponibles à mesure que vous les remplissez. 
 5.  Acceptez les autres valeurs par défaut, puis sélectionnez Vérifier + créer.
@@ -52,7 +52,9 @@ Il s’agit de la règle de réseau qui autorise un accès sortant à deux adres
 10. Pour Protocole, sélectionnez UDP.
 11. Pour Ports de destination, entrez 53.
 12. Pour Type de destination, sélectionnez Adresse IP.
-13. Pour Destination, entrez 209.244.0.3, 209.244.0.4.
+
+>**Remarque** : les élèves doivent maintenant être en mesure de terminer le LAB_04
+14. Pour Destination, entrez 209.244.0.3, 209.244.0.4.
 Il s’agit de serveurs DNS publics gérés par CenturyLink.
-14. Sélectionnez Ajouter.
+15. Sélectionnez Ajouter.
 
