@@ -41,7 +41,9 @@ Votre organisation nécessite le contrôle du trafic réseau en direction et en 
 
 1. Le stockage n’est pas nécessaire pour cette tâche. Sélectionnez votre abonnement. 
 
-1. Déployez les machines virtuelles nécessaires pour cet exercice. 
+1. Déployez les machines virtuelles nécessaires pour cet exercice.
+
+>**Remarque** : si le déploiement échoue pour la restriction de capacité, modifiez le modèle et modifiez la valeur « emplacement ». 
 
    ```powershell
    $RGName = "RG1"
@@ -63,7 +65,7 @@ Des [groupes de sécurité des applications (ASG)](https://learn.microsoft.com/a
     | :------------- | :--------------------------- |
     | Abonnement   | **Sélectionnez votre abonnement** |
     | Resource group | **RG1**                      |
-    | Nom           | `app-backend-asg`          |
+    | Nom           | `app-frontend-asg`          |
     | Région         | **USA Est**                  |
 
 1. Sélectionnez **Vérifier + créer**, puis sélectionnez **Créer**.
