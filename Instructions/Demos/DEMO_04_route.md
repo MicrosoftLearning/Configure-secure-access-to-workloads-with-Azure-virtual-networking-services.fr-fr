@@ -39,28 +39,11 @@ Une table de routes peut être associée à aucun, à un ou à plusieurs sous-r�
 
 1.  Accédez au sous-réseau que vous souhaitez associer à la table de routage.
 
-1.  Sélectionnez **Table de routage*, puis choisissez votre nouvelle table de routage. 
+1.  Sélectionnez **Table de routage**, puis choisissez votre nouvelle table de routage. 
 
 1.  **Enregistrez** vos modifications.
 
  
 >**Remarque** : vous pouvez uniquement associer une table de route à des sous-réseaux de réseaux virtuels qui se trouvent au même emplacement et dans le même abonnement Azure que la table de route.
-
-### Tester le pare-feu
-À présent, testez le pare-feu pour vérifier que les stratégies de routage et de pare-feu fonctionnent comme prévu. 
-
-1.  Connectez un Bureau à distance à l’adresse IP publique du pare-feu et connectez-vous à la machine virtuelle Srv-Work.
-2.  Ouvrez Internet Explorer et accédez à https://www.google.com.
-3.  Sélectionnez OK > Fermer sur les alertes de sécurité d’Internet Explorer. La page d’accueil Google doit s’afficher.
-4.  Accédez à https://www.microsoft.com. Vous devriez être bloqué par le pare-feu.
-
-Maintenant que vous avez vérifié que les règles de pare-feu fonctionnent :
-- Vous pouvez accéder au nom de domaine complet autorisé, mais pas à d’autres.
-- Vous pouvez résoudre les noms DNS à l’aide du serveur DNS externe configuré.
- 
->**Remarque** : les élèves doivent maintenant être en mesure de terminer le LAB_03
-
-
-
 
 >**Remarque** : les élèves doivent maintenant être en mesure de terminer le LAB_04

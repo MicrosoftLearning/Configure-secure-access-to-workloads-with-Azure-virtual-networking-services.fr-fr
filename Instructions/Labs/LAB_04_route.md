@@ -71,7 +71,7 @@ Azure crée automatiquement une [table de route](https://learn.microsoft.com/azu
     | Propriété        | Valeur              |
     | :-------------- | :----------------- |
     | Réseau virtuel | **app-vnet** (RG1) |
-    | Sous-réseau          | **frontend**       |
+    | Sous-réseau          | **serveur principal**       |
 
 ### Créer une route dans la table de route
 

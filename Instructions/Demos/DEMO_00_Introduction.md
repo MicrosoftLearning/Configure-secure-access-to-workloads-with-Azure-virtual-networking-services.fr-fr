@@ -5,15 +5,15 @@ demo:
 ---
 ## Démonstration : Matériel pour les participants et environnement de labo (facultatif)
 
-Utilisez cette démonstration pour montrer aux participants comment accéder à l’environnement du labo et au matériel pédagogique. Vous pouvez le faire au début du cours ou avant la prochaine démonstration. 
+Utilisez cette démonstration pour montrer aux participants comment accéder à l'environnement du labo et au matériel pédagogique. Vous pouvez le faire au début de la classe ou avant la prochaine démonstration. 
 
-### Montrez aux participants l’environnement du labo (ajustez-le en fonction de l’hébergeur de votre labo).
+### Présenter aux élèves l’environnement de labo (à adapter en fonction de l’hôte de votre labo)
 
-- Discutez de la manière dont les participants accèdent à l’environnement de labo. 
+- Expliquez comment les élèves accèdent à l’environnement de labo. 
 
 - Expliquez comment se connecter à l’hôte de la machine virtuelle.
 
-- Expliquez comment accéder au [Portail Azure](https://portal.azure.com). Il est préférable d’ouvrir le Portail Azure dans l’environnement de labo plutôt que dans une fenêtre séparée. Demandez aux participants de lever la main pour savoir combien d’entre eux ont utilisé le portail. 
+- Expliquez comment accéder au [portail Azure](https://portal.azure.com). Il est préférable d’ouvrir le Portail Azure dans l’environnement de labo plutôt que dans une fenêtre séparée. Demandez aux participants de lever la main pour savoir combien d’entre eux ont utilisé le portail. 
 
 - Expliquez les ressources qui ont déjà été configurées pour les labos.
 
@@ -23,7 +23,7 @@ Utilisez cette démonstration pour montrer aux participants comment accéder à 
 
 ### Montrez aux participants leur matériel de cours.
 
-- Accédez à la [page Microsoft Learn](https://learn.microsoft.com).
+- Accédez à la page [Microsoft Learn](https://learn.microsoft.com).
 
 - Expliquez que Microsoft Learn est une excellente ressource où ils peuvent trouver toute la documentation, les formations, les certifications et les évaluations Azure. 
 
