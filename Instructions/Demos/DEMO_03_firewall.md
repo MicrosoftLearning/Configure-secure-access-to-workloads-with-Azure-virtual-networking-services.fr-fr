@@ -1,60 +1,60 @@
 ---
 demo:
-  title: "Démonstration\_: créer et configurer un Pare-feu Azure"
-  module: Guided Project - Configure secure access to workloads with Azure virtual networking services
+    title: 'Demonstration: Create and configure Azure Firewall'
+    module: 'Guided Project - Configure secure access to workloads with Azure virtual networking services'
 ---
-## Démonstration : créer et configurer un Pare-feu Azure
+## Demonstration – Create and configure Azure Firewall
 
-**Remarque :** le déploiement du Pare-feu Azure peut prendre quelques minutes.
+**Note:** Azure Firewall can take a few minutes to deploy.
 
-Dans cette démonstration, vous allez explorer le Pare-feu Azure.
-Examinez et créez une stratégie de pare-feu et de Pare-feu Azure.
-1.  [Diapositive de prise en charge] Avant de commencer la démonstration, penchons-nous sur ce qu’est le Pare-feu Azure.
-2.  Accédez au Portail Azure.
-3.  Créez un Pare-feu Azure.
-4.  (i) sous l’onglet De base, expliquez les options de configuration disponibles à mesure que vous les remplissez. 
-5.  Acceptez les autres valeurs par défaut, puis sélectionnez Vérifier + créer.
-6.  Une fois le déploiement terminé, accédez à la ressource de pare-feu et examinez la page de vue d’ensemble. 
+In this demonstration, explore Azure Firewall.
+Review and create an Azure Firewall and Firewall policy.
+1.	[Supporting Slide] Before beginning the demonstration, let's review what Azure Firewall is.
+2.	Access the Azure portal.
+3.	Create an Azure Firewall.
+4.	ⓘ on the Basics tab explain the configuration options available as you fill them out. 
+5.	Accept the other default values, then select Review + create.
+6.	After deployment is completed, go to the firewall resource, and review the overview page. 
 
 
-### Configurer une règle d’application 
+### Configure an application rule 
 
-1. [Diapositive de prise en charge] Règles de stratégie de Pare-feu Azure
+1. [Supporting Slide] Azure Firewall policy rules
 
-Il s’agit de la règle d’application qui autorise un accès sortant vers www.google.com.
-1.  Accédez à la stratégie de pare-feu que vous avez créée.
-2.  Sélectionnez Règles d’application.
-3.  Sélectionnez Ajouter une collection de règles.
-4.  Pour nom, entrez App-Coll01.
-5.  Pour Priorité, entrez 200.
-6.  Pour Action de collection de règles, sélectionnez Autoriser.
-7.  Sous Règles, dans Nom, entrez Allow-Google.
-8.  Pour Type de source, sélectionnez Adresse IP.
-9.  Pour Source, entrez 10.0.2.0/24.
-10. Pour Protocol:port, entrez http, https.
-11. Pour Type de destination, sélectionnez FQDN.
-12. Pour Destination, entrez www.google.com.
-13. Sélectionnez Ajouter.
+This is the application rule that allows outbound access to www.google.com.
+1.	Navigate to the firewall policy you created.
+2.	Select Application rules.
+3.	Select Add a rule collection.
+4.	For Name, enter App-Coll01.
+5.	For Priority, enter 200.
+6.	For Rule collection action, select Allow.
+7.	Under Rules, for Name, enter Allow-Google.
+8.	For Source type, select IP address.
+9.	For Source, enter 10.0.2.0/24.
+10.	For Protocol:port, enter http, https.
+11.	For Destination Type, select FQDN.
+12.	For Destination, enter www.google.com
+13.	Select Add.
 
-Le Pare-feu Azure comprend un regroupement de règles intégré pour les noms de domaine complets d’infrastructure qui sont autorisés par défaut. Ces noms de domaine complets sont spécifiques à la plateforme et ne peuvent pas être utilisés à d’autres fins. Pour plus d’informations, consultez Noms de domaine complets d’infrastructure.
+Azure Firewall includes a built-in rule collection for infrastructure FQDNs that are allowed by default. These FQDNs are specific for the platform and can't be used for other purposes. For more information, see Infrastructure FQDNs.
 
-### Configurer une règle de réseau
-Il s’agit de la règle de réseau qui autorise un accès sortant à deux adresses IP sur le port 53 (DNS).
-1.  Sélectionnez Règles de réseau.
-2.  Sélectionnez Ajouter une collection de règles.
-3.  Pour nom, entrez Net-Coll01.
-4.  Pour Priorité, entrez 200.
-5.  Pour Action de collection de règles, sélectionnez Autoriser.
-6.  Pour Groupe de collection de règles, sélectionnez DefaultNetworkRuleCollectionGroup.
-7.  Sous Règles, dans Nom, entrez Allow-DNS.
-8.  Pour Type de source, sélectionnez Adresse IP.
-9.  Pour Source, entrez 10.0.2.0/24.
-10. Pour Protocole, sélectionnez UDP.
-11. Pour Ports de destination, entrez 53.
-12. Pour Type de destination, sélectionnez Adresse IP.
+### Configure a network rule
+This is the network rule that allows outbound access to two IP addresses at port 53 (DNS).
+1.	Select Network rules.
+2.	Select Add a rule collection.
+3.	For Name, enter Net-Coll01.
+4.	For Priority, enter 200.
+5.	For Rule collection action, select Allow.
+6.	For Rule collection group, select DefaultNetworkRuleCollectionGroup.
+7.	Under Rules, for Name, enter Allow-DNS.
+8.	For Source type, select IP Address.
+9.	For Source, enter 10.0.2.0/24.
+10.	For Protocol, select UDP.
+11.	For Destination Ports, enter 53.
+12.	For Destination type select IP address.
 
->**Remarque** : les élèves doivent maintenant être en mesure de terminer le LAB_04
-14. Pour Destination, entrez 209.244.0.3, 209.244.0.4.
-Il s’agit de serveurs DNS publics gérés par CenturyLink.
-15. Sélectionnez Ajouter.
+>**Note**: Students should now be able to complete LAB_04
+14.	For Destination, enter 209.244.0.3, 209.244.0.4.
+These are public DNS servers operated by CenturyLink.
+15.	Select Add.
 

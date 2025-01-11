@@ -1,40 +1,40 @@
 ---
 demo:
-  title: "Démonstration\_: Matériel pour les participants et environnement de labo (facultatif)"
-  module: Guided Project - Configure secure access to workloads with Azure virtual networking services
+    title: 'Demonstration: Student materials and lab environment (adjust)'
+    module: 'Guided Project - Configure secure access to workloads with Azure virtual networking services'
 ---
-## Démonstration : Matériel pour les participants et environnement de labo (facultatif)
+## Demonstration - Student materials and lab environment (optional)
 
-Utilisez cette démonstration pour montrer aux participants comment accéder à l'environnement du labo et au matériel pédagogique. Vous pouvez le faire au début de la classe ou avant la prochaine démonstration. 
+Use this demonstration to show students how to access the lab environment and student materials. You can do this at the beginning of class or before the next demonstration. 
 
-### Présenter aux élèves l’environnement de labo (à adapter en fonction de l’hôte de votre labo)
+### Show students the lab environment (adjust for your lab hoster)
 
-- Expliquez comment les élèves accèdent à l’environnement de labo. 
+- Discuss how students access the lab environment. 
 
-- Expliquez comment se connecter à l’hôte de la machine virtuelle.
+- Explain how to sign-in to the virtual machine host.
 
-- Expliquez comment accéder au [portail Azure](https://portal.azure.com). Il est préférable d’ouvrir le Portail Azure dans l’environnement de labo plutôt que dans une fenêtre séparée. Demandez aux participants de lever la main pour savoir combien d’entre eux ont utilisé le portail. 
+- Explain how to access the [Azure portal](https://portal.azure.com). It is preferred to open the Azure portal in the lab environment instead of a separate window. Ask for a show of hands on how many students have used the portal. 
 
-- Expliquez les ressources qui ont déjà été configurées pour les labos.
+- Explain what resources have already been configured for the labs.
 
-- Passez en revue l’utilisation des instructions du labo. 
+- Review how to use the lab instructions. 
 
-- Ajoutez d’autres sujets propres à votre hôte. 
+- Add other topics specific to your hoster. 
 
-### Montrez aux participants leur matériel de cours.
+### Show students their course materials.
 
-- Accédez à la page [Microsoft Learn](https://learn.microsoft.com).
+- Access the [Microsoft Learn page](https://learn.microsoft.com).
 
-- Expliquez que Microsoft Learn est une excellente ressource où ils peuvent trouver toute la documentation, les formations, les certifications et les évaluations Azure. 
+- Discuss that Microsoft Learn is a great source for all Azure documentation, training, certifications, and assessments. 
 
-- Sélectionnez **Parcours d’apprentissage**, puis recherchez le parcours d’apprentissage **Configurer un accès sécurisé à vos charges de travail à l’aide du réseau virtuel Azure**.
+- Select **Learning Paths** and then search for the **Configure secure access to your workloads using Azure virtual networking** learning path.
 
-- Expliquez que le contenu du parcours d’apprentissage est propre à cette évaluation, mais qu’il existe beaucoup plus de contenu de stockage qu’ils peuvent examiner.
+- Discuss that the content in the learning path is specific to this assessment, but there is much more storage content they can review.
 
-- Expliquez que le contenu est du matériel de référence et il n’y a pas de mappage individuel avec les présentations en classe.
+- Explain the content is reference material and there isn't a 1:1 mapping with the classroom presentations.
 
-- Indiquez que chacun de ces modules peut comporter des activités pratiques supplémentaires. Vous identifierez ces activités tout au long du cours. 
+- Discuss that each of these modules may have additional hands-on activities. You will identify these activities as the course progresses. 
 
-- Demandez aux participants de localiser le parcours d’apprentissage et de l’ajouter à leurs signets.
+- Ask the students to locate and bookmark the learning path.
 
  

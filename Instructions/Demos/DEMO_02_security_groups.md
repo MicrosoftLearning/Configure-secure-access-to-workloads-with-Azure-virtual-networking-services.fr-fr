@@ -1,57 +1,57 @@
 ---
 demo:
-  title: "Démonstration\_: créer et configurer des groupes de sécurité réseau"
-  module: Guided Project - Configure secure access to workloads with Azure virtual networking services
+    title: 'Demonstration: Create and configure network security groups'
+    module: 'Guided Project - Configure secure access to workloads with Azure virtual networking services'
 ---
-## Démonstration : créer et configurer des groupes de sécurité réseau
+## Demonstration – Create and configure network security groups
 
 
-Dans cette démonstration, nous allons explorer les groupes de sécurité. 
+In this demonstration, we will explore security groups. 
 
-**Remarque :** une **[simulation interactive de laboratoire pour les réseaux virtuels ](https://mslearn.cloudguides.com/en-us/guides/AZ-900%20Exam%20Guide%20-%20Azure%20Fundamentals%20Exercise%2013?azure-portal=true)** est disponible et vous permet de cliquer sur un labo similaire si vous ne parvenez pas à effectuer une démonstration en direct. Il peut exister de légères différences entre la simulation interactive et la version de démonstration suggérée. Toutefois, les concepts et idées de base présentés sont identiques. 
+**Note:** An **[interactive lab simulation for virtual networks](https://mslearn.cloudguides.com/en-us/guides/AZ-900%20Exam%20Guide%20-%20Azure%20Fundamentals%20Exercise%2013?azure-portal=true)** is available that allows you to click through a similar lab if you are unable to do a live demonstration. You may find slight differences between the interactive simulation and the suggested demo, but the core concepts and ideas being demonstrated are the same. 
 
-[Restreindre l’accès réseau aux ressources PaaS - Tutoriel - Portail Azure](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources)
+[Restrict access to PaaS resources - tutorial - Azure portal](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources)
 
-### Créer un groupe de sécurité réseau
+### Create a network security group
 
-1. Accédez au portail Azure.
+1. Access the Azure Portal.
 
-1. Recherchez et sélectionnez  **Groupes de sécurité réseau**.
+1. Search for and select the **Network Security Groups**.
 
-1. [Diapositive de prise en charge] Créez un NSG en expliquant les paramètres au fur et à mesure. 
+1. [Supporting Slide] Create a NSG explaining the settings as you go. 
  
-1. Attendez que le nouveau NSG soit déployé.
+1. Wait for the new NSG to deploy.
 
-**Explorer les règles de trafic entrant et sortant**
+**Explore inbound and outbound rules**
 
-1. Sélectionnez votre nouveau NSG.
+1. Select your new NSG.
 
-1. [Diapositive de prise en charge] Expliquez comment le groupe de sécurité réseau peut être associé à des sous-réseaux ou à des interfaces réseau.
+1. [Supporting Slide] Discuss how the NSG can be associated with subnets or network interfaces.
 
-1. Expliquez l’objectif des règles de trafic entrant et sortant.  
+1. Discuss the purpose inbound and outbound rules.  
 
-1. Expliquez les règles de trafic entrant et sortant par défaut. 
+1. Review the default inbound and outbound rules. 
 
-1. Créez une nouvelle règle, en expliquant les paramètres au fur et à mesure. Expliquez plus particulièrement la sélection du service (comme HTTPS) et les paramètres de priorité. 
+1. Create a new rule, explaining the settings as you go. Specifically discuss the service selection (like HTTPS) and the priority settings. 
  
 
-### Créer un ASG
+### Create ASG
  
-1. [Diapositive de prise en charge] Recherchez et sélectionnez les  **groupes de sécurité d’application**.
+1. [Supporting Slide] Search for and select the **Application Security Groups**.
 
-1. Créez un ASG en expliquant les paramètres au fur et à mesure. 
+1. Create an ASG explaining the settings as you go. 
  
-1. Attendez que le nouveau ASG soit déployé.
+1. Wait for the new ASG to deploy.
 
-1. Expliquez comment l’ASG peut être associé aux règles de groupe de sécurité réseau.
-
-
-### Associer les NSG 
-1.  Accédez au NSG que vous avez créé
-1.  Dans la section Paramètres, sélectionnez Sous-réseaux.
-1.  Dans la page Sous-réseaux, sélectionnez + Associer.
-1.  Sous Associer un sous-réseau, sélectionnez votre réseau virtuel.
+1. Discuss how the ASG can be associated with NSG rules.
 
 
->**Remarque** : les élèves doivent maintenant être en mesure de terminer le LAB_02
+### Associate the NSGs 
+1.	Navigate to the NSG you created
+1.	Select Subnets from the Settings section.
+1.	In the Subnets page, select + Associate
+1.	Under Associate subnet, select your Virtual network.
+
+
+>**Note**: Students should now be able to complete LAB_02
 
