@@ -1,49 +1,50 @@
 ---
 demo:
-  title: "Démonstration\_: créer et configurer un routage réseau"
-  module: Guided Project - Configure secure access to workloads with Azure virtual networking services
+    title: 'Demonstration: Create and configure network routing'
+    module: 'Guided Project - Configure secure access to workloads with Azure virtual networking services'
 ---
-## Démonstration : créer et configurer un routage réseau
+## Demonstration – Create and configure network routing
 
-Dans cette démonstration, nous allons découvrir comment créer une table de routage, définir une route personnalisée et associer la route à un sous-réseau. 
-
-
-**Remarque :**  Cette démonstration nécessite un réseau virtuel avec au moins un sous-réseau.
-
-[Router le trafic réseau - Tutoriel - Portail Azure](https://learn.microsoft.com/azure/virtual-network/tutorial-create-route-table-portal#create-a-route-table)
+In this demonstration, we will learn how to create a route table, define
+a custom route, and associate the route with a subnet. 
 
 
-### Créer une table de route 
+**Note:** This demonstration requires a virtual network with at least one subnet.
 
-1. Quand vous en avez le temps, passez en revue le diagramme du tutoriel. Expliquez pourquoi vous devez créer une route définie par l’utilisateur. 
+[Route network traffic - tutorial - Azure portal](https://learn.microsoft.com/azure/virtual-network/tutorial-create-route-table-portal#create-a-route-table)
 
-1. Accédez au portail Azure.
 
-1. Recherchez et sélectionnez **Tables de routage**. Expliquez quand la **propagation des routes de passerelle** doit être utilisée. 
+### Create a Route table 
 
-1. Créez une table de routage et expliquez les paramètres inhabituels. 
+1. As you have time review the tutorial diagram. Explain why you need to create a user-defined route. 
 
-1. Attendez que la nouvelle table de routage soit déployée.
+1. Access the Azure portal.
 
-**Ajouter un itinéraire**
+1. Search for and select **Route tables**. Discuss when **propagate gateway routes** should be used. 
 
-1.  Sélectionnez votre nouvelle table de routage, puis  **Routes**.
+1. Create a routing table, explain any uncommon settings. 
 
-1.  Créez une nouvelle **route**. Décrivez les différents **types de tronçons** disponibles. 
+1. Wait for the new routing table to be deployed.
 
-1.  Créez la nouvelle route, puis attendez que la ressource soit déployée.
+**Add a route**
+
+1.  Select your new routing table, and then select **Routes**.
+
+1.  Create a new **route**. Discuss the different **hop types** that are available. 
+
+1.  Create the new route and wait for the resource to be deployed.
  
-### Associer une table de route à un sous-réseau
-Une table de routes peut être associée à aucun, à un ou à plusieurs sous-réseaux. Les tables de routage ne sont pas associées à des réseaux virtuels, Vous devez associer une table de routage à chaque sous-réseau auquel vous voulez associer une table de routage.
+### Associate a Route Table to a subnet
+A route table can be associated to zero or more subnets. Route tables aren't associated to virtual networks. You must associate a route table to each subnet you want the route table associated to.
 
 
-1.  Accédez au sous-réseau que vous souhaitez associer à la table de routage.
+1.  Navigate to the subnet you want to associate with the routing table.
 
-1.  Sélectionnez **Table de routage**, puis choisissez votre nouvelle table de routage. 
+1.  Select **Route table** and choose your new routing table. 
 
-1.  **Enregistrez** vos modifications.
+1.  **Save** your changes.
 
  
->**Remarque** : vous pouvez uniquement associer une table de route à des sous-réseaux de réseaux virtuels qui se trouvent au même emplacement et dans le même abonnement Azure que la table de route.
+>**Note**: You can only associate a route table to subnets in virtual networks that exist in the same Azure location and subscription as the route table.
 
->**Remarque** : les élèves doivent maintenant être en mesure de terminer le LAB_04
+>**Note**: Students should now be able to complete LAB_04

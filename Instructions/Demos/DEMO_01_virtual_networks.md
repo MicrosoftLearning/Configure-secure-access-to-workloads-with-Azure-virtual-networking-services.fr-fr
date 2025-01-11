@@ -1,64 +1,64 @@
 ---
 demo:
-  title: "Démonstration\_: créer et configurer des réseaux virtuels et le peering"
-  module: Guided Project - Configure secure access to workloads with Azure virtual networking services
+    title: 'Demonstration: Create and Configure Virtual Networks and peering'
+    module: 'Guided Project - Configure secure access to workloads with Azure virtual networking services'
 ---
-## Démonstration : créer et configurer des réseaux virtuels et le peering
+## Demonstration – Create and Configure Virtual Networks and peering
 
 
-Dans cette démonstration, vous allez créer des réseaux virtuels.
+In this demonstration, you will create virtual networks.
 
-**Remarque :**  vous pouvez utiliser les valeurs suggérées pour les paramètres ou vos propres valeurs personnalisées si vous préférez.
+**Note:** You can use the suggested values for the settings, or your own custom values if you prefer.
 
-**Remarque :** une **[simulation interactive de laboratoire pour les réseaux virtuels ](https://mslearn.cloudguides.com/en-us/guides/AZ-900%20Exam%20Guide%20-%20Azure%20Fundamentals%20Exercise%204?azure-portal=true)** et **[l’appairage de réseaux virtuels](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%209?azure-portal=true)** est disponible et vous permet de cliquer sur un labo similaire si vous ne parvenez pas à effectuer une démonstration en direct. Il peut exister de légères différences entre la simulation interactive et la version de démonstration suggérée. Toutefois, les concepts et idées de base présentés sont identiques. 
+**Note:** An **[interactive lab simulation for virtual networks](https://mslearn.cloudguides.com/en-us/guides/AZ-900%20Exam%20Guide%20-%20Azure%20Fundamentals%20Exercise%204?azure-portal=true)** and **[Virtual network peering](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%209?azure-portal=true)** is available that allows you to click through a similar lab if you are unable to do a live demonstration. You may find slight differences between the interactive simulation and the suggested demo, but the core concepts and ideas being demonstrated are the same. 
 
 
-[Démarrage rapide : créer un réseau virtuel - Portail Azure](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+[Quickstart: Create a virtual network - Azure portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
 
-### Créer un réseau virtuel dans le portail
+### Create a virtual network in the portal
 
 
    
-1.  [Diapositive de prise en charge] Avant de commencer la démonstration, examinons les réseaux virtuels et les concepts clés des Réseaux virtuels Azure. Utilisez cette diapositive pour mettre en évidence les capacités des Réseaux virtuels Azure, ainsi que les concepts et meilleures pratiques relatifs au Réseau virtuel Azure. Lors de la démonstration de la création d’un réseau virtuel, vous pouvez expliquer les concepts de base de l’espace d’adressage, des sous-réseaux, des régions et des abonnements. Vous pouvez également discuter de ces diapositives à la fin et accéder directement à la démonstration.
+1.  [Supporting Slide] Before beginning the demonstration, let's review what virtual networks are and key concepts for Azure Virtual Networks. Use this slide to highlight the capabilities of Azure Virtual Networks. As well as Azure Virtual Network concepts and best practices. As you demonstrate creating a virtual network you can explain the basic concepts of address space, subnets, regions, and subscriptions. You could also discuss these slides at the end and get straight into the demonstration.
    
-2.  Connectez-vous au portail Azure et recherchez  **Réseaux virtuels**.
+2.  Sign in the to the Azure portal and search for **Virtual Networks**.
    
-3.  Créez un réseau virtuel, en expliquant au fur et à mesure les paramètres de base. Veillez à créer au moins un sous-réseau. 
+3.  Create a virtual network, explaining the basic settings as you go. Ensure at least one subnet is created. 
    
-4.  Expliquez que le Portail Azure propose une interface conviviale. Les champs obligatoires sont signalés par un astérisque rouge.
+4.  Explain the Azure portal provides an easy-to-use interface. Items marked with a red asterisk are required.
    
-5.  [Diapositive de prise en charge] Sélectionnez l’onglet Sécurité. Utilisez cette diapositive pour brièvement mettre en évidence les services de sécurité. Ces sujets seront abordés plus en détail dans la suite du cours. En savoir plus sur les services pouvant être déployés dans un réseau virtuel. 
+5.  [Supporting Slide] Select the Security tab. Use this slide to highlight the security services briefly, these topics will be covered in more detail later in the course. Learn more, Services that can be deployed into a virtual network. 
    
-6.  [Diapositive de prise en charge] Sélectionnez l’onglet Adresses IP. Utilisez cette diapositive pour examiner la planification des réseaux virtuels et des sous-réseaux. Ajoutez ou modifiez un sous-réseau pour montrer aux élèves comment configurer des sous-réseaux. 
-7.  Cliquez Revoir et assurez-vous qu’il n’y a pas d’erreurs de validation.
-8.  Cliquez sur Créer, puis attendez que le réseau virtuel soit déployé. Attirez l’attention sur les messages de notification. 
-9.  Montrez comment accéder à la ressource.
-10. Répétez le processus de création d’un autre réseau virtuel afin de pouvoir présenter VNET Peering.
+6.  [Supporting Slide] Select the IP Addresses tab. Use this slide to review: Plan virtual networks and subnets. Add or modify a subnet to demonstrate to students how to configure subnets. 
+7.  Click Review and ensure there are no validation errors.
+8.  Click Create and wait for the virtual network to be deployed. Point out the notification messages. 
+9.  Show how to go to the resource.
+10. Repeat the process of creating another virtual network so you can demonstrate VNet Peering.
 
-## Configurer VNET Peering
+## Configure VNet Peering
 
-**Remarque :**  Pour cette démonstration, vous aurez besoin de deux réseaux virtuels.
+**Note:** For this demonstration you will need two virtual networks.
 
-[Connecter des réseaux virtuels avec le peering VNet - Tutoriel](https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-portal)
+[Connect virtual networks with VNet peering - tutorial](https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-portal)
 
-**Configurer le peering de réseaux virtuels sur le premier réseau virtuel**
+**Configure VNet peering on the first virtual network**
 
-1. Dans le **portail Azure**, sélectionnez le premier réseau virtuel. Examinez la valeur du peering. 
+1. In the **Azure portal**, select the first virtual network. Review the value of peering. 
 
-1. Sous **Paramètres**, sélectionnez **Peerings** et **+ Ajoutez** un nouveau peering.
+1. Under **Settings**, select **Peerings** and **+ Add** a new peering.
 
-1. Configurez le peering du deuxième réseau virtuel. Utilisez les icônes d’informations pour passer en revue les différents paramètres. 
+1. Configure the peering the second virtual network. Use the information icons to review the different settings. 
 
-1. Une fois le peering terminé, passez en revue **l’état du peering**. 
+1. When the peering is complete, review the **Peering status**. 
 
-**Confirmer le peering de réseaux virtuels sur le deuxième réseau virtuel**
+**Confirm VNet peering on the second virtual network**
 
-1. Dans le **portail Azure**, sélectionnez le second réseau virtuel.
+1. In the **Azure portal**, select the second virtual network
 
-1. Sous **Paramètres**, sélectionnez **Peerings**.
+1. Under **Settings**, select **Peerings**.
 
-1. Notez qu’un appairage a été créé automatiquement. Notez que **l’état du peering** est **Connecté**.
+1. Notice that a peering has automatically been created. Notice that the **Peering Status** is **Connected**.
 
 
->**Remarque** : les élèves doivent maintenant être en mesure de terminer le LAB_01
+>**Note**: Students should now be able to complete LAB_01
 
