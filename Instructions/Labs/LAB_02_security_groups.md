@@ -10,9 +10,7 @@ lab:
 
 Votre organisation nécessite le contrôle du trafic réseau en direction et en provenance du réseau app-vnet. Vous identifiez ces exigences.
 + Le sous-réseau frontend comprend des serveurs Web accessibles à partir d’Internet. Un **groupe de sécurité des applications **(ASG) est nécessaire pour ces serveurs. L’ASG doit être associé à n’importe quelle interface de machine virtuelle qui fait partie du groupe. Cela permettra de gérer facilement les serveurs Web. 
-+ Une **règle NSG** est nécessaire pour autoriser le trafic HTTPS entrant vers l’ASG. Cette règle utilise le protocole TCP sur le port 443. 
 + Le sous-réseau backend comprend des serveurs de base de données utilisés par les serveurs Web frontend. Un **groupe de sécurité réseau** (NSG) est nécessaire pour contrôler ce trafic. Le NSG doit être associé à n’importe quelle interface de machine virtuelle accessible par les serveurs Web. 
-+ Une **règle NSG** est nécessaire pour autoriser le trafic réseau entrant de l’ASG vers les serveurs backend.  Cette règle utilise le service MS SQL et le port 1443. 
 + Pour les tests, une machine virtuelle doit être installée dans le sous-réseau frontend (VM1) et le sous-réseau backend (VM2).  Le groupe informatique a fourni un modèle Azure Resource Manager pour déployer ces **serveurs Ubuntu**. 
 
 ## Tâches d'apprentissage
@@ -39,9 +37,9 @@ Votre organisation nécessite le contrôle du trafic réseau en direction et en 
 
 1. Lorsque vous êtes invité à sélectionner **Bash** ou **PowerShell**, sélectionnez **PowerShell**.
 
-1. Le stockage n’est pas nécessaire pour cette tâche. Sélectionnez votre abonnement. 
+1. Le stockage n’est pas nécessaire pour cette tâche. Sélectionnez votre abonnement. Sélectionnez **Appliquer** pour appliquer vos modifications. 
 
-1. Déployez les machines virtuelles nécessaires pour cet exercice.
+1. Utilisez ces commandes pour déployer les machines virtuelles nécessaires pour cet exercice.
 
 >**Remarque** : si le déploiement échoue pour la restriction de capacité, modifiez le modèle et modifiez la valeur « emplacement ». 
 
@@ -74,7 +72,7 @@ Des [groupes de sécurité des applications (ASG)](https://learn.microsoft.com/a
 
 **Associer le groupe de sécurité des applications à l’interface réseau de la machine virtuelle**
 
-1. Dans le portail Azure, recherchez et sélectionnez `VM2`.
+1. Dans le portail Azure, recherchez et sélectionnez `VM1`.
 
 1. Dans le panneau **Mise en réseau**, sélectionnez l’onglet **Groupes de sécurité des applications**, puis **Ajouter des groupes de sécurité des applications**.
 
@@ -126,7 +124,7 @@ Un NSG utilise des [règles de sécurité](https://learn.microsoft.com/azure/vir
     | Source                                 | **Any**                        |
     | Plages de ports source                     | **\***                         |
     | Destination                            | **Groupe de sécurité d’application** |
-    | Groupe de sécurité d’application de destination | **app-backend-asg**            |
+    | Groupe de sécurité d’application de destination | **app-frontend-asg**            |
     | Service                                | **SSH**                        |
     | Action                                 | **Autoriser**                      |
     | Priorité                               | **100**                        |
