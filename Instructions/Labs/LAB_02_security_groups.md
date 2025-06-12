@@ -41,7 +41,7 @@ Votre organisation nécessite le contrôle du trafic réseau en direction et en 
 
 1. Utilisez ces commandes pour déployer les machines virtuelles nécessaires pour cet exercice.
 
->**Remarque** : si le déploiement échoue pour la restriction de capacité, modifiez le modèle et modifiez la valeur « emplacement ». 
+>**Note** : si le déploiement échoue pour la restriction de capacité, modifiez le modèle et modifiez la valeur « emplacement ». 
 
    ```powershell
    $RGName = "RG1"
@@ -122,7 +122,7 @@ Un NSG utilise des [règles de sécurité](https://learn.microsoft.com/azure/vir
     | Propriété                               | Valeur                          |
     | :------------------------------------- | :----------------------------- |
     | Source                                 | **Any**                        |
-    | Plages de ports source                     | **\***                         |
+    | Source port ranges                     | **\***                         |
     | Destination                            | **Groupe de sécurité d’application** |
     | Groupe de sécurité d’application de destination | **app-frontend-asg**            |
     | Service                                | **SSH**                        |
