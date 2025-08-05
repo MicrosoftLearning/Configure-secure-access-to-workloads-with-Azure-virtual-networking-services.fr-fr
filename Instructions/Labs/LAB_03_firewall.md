@@ -70,6 +70,7 @@ Votre organisation nécessite une sécurité réseau centralisée pour le résea
     | Choisir un réseau virtuel | **Utiliser existant**                                  |
     | Réseau virtuel          | **app-vnet** (RG1)                                |
     | Adresse IP publique        | Ajouter nouveau : **fwpip**                                |
+    | Activer la carte réseau de gestion de pare-feu | **Décocher la case**                         |
 
     [En savoir plus sur la création d’un pare-feu](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal).
 
@@ -118,7 +119,7 @@ Votre organisation nécessite une sécurité réseau centralisée pour le résea
     | Groupe de regroupement de règles  | **DefaultNetworkRuleCollectionGroup** |
     | Règle                  | **AllowDns**         |
     | Source                | `10.1.0.0/23`      |
-    | Protocole              | **UDP**              |
+    | Protocol              | **UDP**              |
     | Ports de destination     | `53`               |
     | Adresses de destination | **1.1.1.1, 1.0.0.1** |
 
